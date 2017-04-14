@@ -147,6 +147,7 @@ const HeaderRow = React.createClass({
   setScrollLeft(scrollLeft: number) {
     this.props.columns.forEach( (column, i) => {
       if (column.locked) {
+        if (!this.cells[i]) return; // Fix for when rowSelection is enabled and this field for the leftmost column is undefined
         this.cells[i].setScrollLeft(scrollLeft);
       } else {
         if (this.cells[i]) {
